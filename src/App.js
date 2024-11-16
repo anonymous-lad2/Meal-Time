@@ -1,10 +1,16 @@
-import './App.css';
+import Header from './components/Header';
+import { useState } from 'react';
+import photo from './utility/food-delivery-main.webp'
 
 function App() {
+
+  const [darkTheme, setDarkTheme] = useState(false);
+
   return (
-    <div className='h-screen flex flex-col justify-center items-center bg-green-600 font-bold'>
-      <h1 className='text-3xl'>Hello guyz</h1>
-      <h2 className='text-xl'>welcome to online food delivery app!!</h2>
+    <div className={darkTheme ? "dark" : ""}>
+      <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-200 min-h-screen">
+        <Header darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
+      </div>
     </div>
   );
 }
