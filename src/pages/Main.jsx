@@ -26,10 +26,10 @@ const Main = () => {
     }
 
     return (
-        <div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
             {
                 data.map((restaurant) => (
-                    <div key={restaurant.info.id}>
+                    <div key={restaurant.info.id} className="hover:scale-105 transition-transform duration-300 hover:cursor-pointer">
                       <RestaurantCard info={restaurant.info} />
                     </div>
                 ))
