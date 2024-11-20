@@ -7,6 +7,8 @@ import Header from "../components/Header"; // Adjust the path if needed
 const Home = ({ darkTheme, setDarkTheme }) => {
   return (
     <div className="relative min-h-screen overflow-hidden">
+      <Header darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
+
       {/* Carousel */}
       <Carousel
         showArrows={false}
@@ -22,10 +24,11 @@ const Home = ({ darkTheme, setDarkTheme }) => {
           <div
             key={index}
             className="relative w-full h-screen bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${data.image})`,
+            }}
           >
-
-            {/* Header */}
-            <Header darkTheme={darkTheme} setDarkTheme={setDarkTheme} className='w-full'/>
+            <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
             {/* Text Content */}
             <div className="absolute inset-0 flex flex-col justify-center items-center text-center z-10 text-white">
