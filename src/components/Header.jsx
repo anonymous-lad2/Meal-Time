@@ -10,7 +10,8 @@ const Header = ({ darkTheme, setDarkTheme }) => {
   const menuItems = ["Home", "About", "Contact", "Deals🔥"];
 
   return (
-    <div className="flex justify-between items-center max-w-[1200px] mx-auto px-4 py-4 relative">
+    <div className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center 
+                    w-screen mx-auto px-10 py-1 mb-11 bg-white dark:bg-gray-800 shadow-md">
       <img src={logo} alt="Logo" className="h-12 w-18 sm:h-16" />
 
       {/* Desktop menu */}
@@ -24,10 +25,12 @@ const Header = ({ darkTheme, setDarkTheme }) => {
 
       {/* Actions */}
       <div className="flex items-center gap-4">
-
         <FaRegUser className="hover:underline cursor-pointer" />
 
-        <button onClick={() => setDarkTheme(!darkTheme)} className="p-2 rounded-md">
+        <button
+          onClick={() => setDarkTheme(!darkTheme)}
+          className="p-2 rounded-md"
+        >
           {darkTheme ? <MdOutlineLightMode /> : <MdNightlight />}
         </button>
 
@@ -35,15 +38,19 @@ const Header = ({ darkTheme, setDarkTheme }) => {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="md:hidden p-2 rounded-md z-50"
         >
-          {isMobileMenuOpen ? <AiOutlineClose size={24} /> : <AiOutlineMenu size={24} />}
+          {isMobileMenuOpen ? (
+            <AiOutlineClose size={24} />
+          ) : (
+            <AiOutlineMenu size={24} />
+          )}
         </button>
-
       </div>
 
       {/* Mobile menu */}
       <div
         className={`fixed top-0 right-0 h-full w-3/4 max-w-[300px] bg-white dark:bg-gray-800 shadow-lg transition-transform transform ${
-          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"} z-40`}
+          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        } z-40`}
       >
         <ul className="flex flex-col items-center gap-4 py-8">
           {menuItems.map((item) => (
