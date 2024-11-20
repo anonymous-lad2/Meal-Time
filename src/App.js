@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className={`scroll-w-0 ${darkTheme ? "dark" : ""}`}>
-      <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-200 min-h-screen">
+      <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-200 min-h-screen px-8">
         <Home darkTheme={darkTheme} setDarkTheme={setDarkTheme}/>
         <Main/>
       </div>

@@ -21,10 +21,10 @@ const RestaurantCard = ({ info }) => {
       />
 
       <div className="p-4">
-        <h2 className="text-lg font-semibold text-black">{name}</h2>
+        <h2 className="text-lg font-semibold text-black">{name.length > 30 ? name.substring(0, 30) + '...' : name}</h2>
 
         <p className="text-gray-500">
-          {locality},{" "}
+          {locality.length > 15 ? locality.substring(0, 15) + '...' : locality},
           {areaName.length > 15 ? areaName.substring(0, 15) + "..." : areaName}
         </p>
 
