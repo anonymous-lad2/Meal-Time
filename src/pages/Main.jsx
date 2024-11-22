@@ -6,6 +6,7 @@ import RestaurantCard from "../components/RestaurantCard"
 const Main = () => {
 
     const [data, setData] = useState();
+    const [searchText, setSearchText] = useState("");
     const [loading, setLoading] = useState(true);
 
     const fetchedList = async () => {
