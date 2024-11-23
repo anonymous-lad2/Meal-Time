@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Home from './pages/Home';
 import Main from './pages/Main';
 import Testimonial from './components/Testimonial';
+import Footer from './pages/Footer';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Home darkTheme={darkTheme} setDarkTheme={setDarkTheme}/>
         <Main/>
         <Testimonial/>
+        <Footer/>
       </div>
     </div>
   );
