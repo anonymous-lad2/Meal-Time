@@ -9,7 +9,6 @@ const Home = ({ darkTheme, setDarkTheme }) => {
     <div className="relative min-h-screen overflow-hidden">
       <Header darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
 
-      {/* Carousel */}
       <Carousel
         showArrows={false}
         autoPlay={true}
