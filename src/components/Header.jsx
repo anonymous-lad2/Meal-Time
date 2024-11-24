@@ -3,6 +3,7 @@ import logo from "../utility/restaurant-logo-design-template.avif";
 import { MdNightlight, MdOutlineLightMode } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { FaRegUser } from "react-icons/fa";
+import { Link, NavLink } from 'react-router-dom'
 
 const Header = ({ darkTheme, setDarkTheme }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -12,7 +13,9 @@ const Header = ({ darkTheme, setDarkTheme }) => {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center 
                     w-screen mx-auto px-10 py-1 mb-11 bg-white dark:bg-gray-800 shadow-md">
-      <img src={logo} alt="Logo" className="h-12 w-18 sm:h-16" />
+      <NavLink to='/'> 
+        <img src={logo} alt="Logo" className="h-12 w-18 sm:h-16" />
+      </NavLink>
 
       {/* Desktop menu */}
       <ul className="hidden md:flex items-center gap-4">

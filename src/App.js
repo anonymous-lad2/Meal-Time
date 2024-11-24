@@ -17,39 +17,44 @@ function App() {
         <div className={`scroll-w-0 ${darkTheme ? "dark" : ""}`}>
           <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-200 min-h-screen px-8">
             <Home darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
-            <Main />
-            <Testimonial />
+            <Outlet />
             <Footer />
           </div>
         </div>
       ),
       children: [
         {
+          path: '/',
+          element: <div>
+            <Main />
+            <Testimonial />
+          </div>
+        },
+
+        {
           path: "/about",
           element: <div>ff</div>,
         },
+
         {
           path: "/contact",
           element: <Footer />,
         },
+        
       ],
       errorElement: (
         <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-200 min-h-screen">
           <Header darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
           <Error/>
+          <Footer />
         </div>
       ),
     },
   ]);
 
   return (
-    <div className={`scroll-w-0 ${darkTheme ? "dark" : ""}`}>
-      <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-200 min-h-screen px-8">
-        <Home darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
-        <Main />
-        <Testimonial />
-        <Footer />
-      </div>
+    <div className={darkTheme ? "dark" : ""}>
+      <RouterProvider router={appRouter} />
     </div>
   );
 }

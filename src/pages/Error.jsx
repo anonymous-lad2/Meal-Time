@@ -6,9 +6,9 @@ const Error = () => {
     console.log(err)
 
     return (
-        <div>
-            <h1>Error</h1>
-            <h2>Bad Request</h2>
+        <div className="text-center py-20">
+            <h1 className="font-bold text-3xl">Error</h1>
+            <h2 className="text-2xl">Bad Request</h2>
             <h3>{err.status} - {err.statusText}</h3>
         </div>
     )
