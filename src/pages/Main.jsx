@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { main_API } from "../utility/data";
 import RestaurantCard from "../components/RestaurantCard";
+import Shimmer from "../components/Shimmer";
 
 const Main = () => {
   const [data, setData] = useState();
@@ -30,10 +31,6 @@ const Main = () => {
   useEffect(() => {
     fetchedList();
   }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className="p-4 mt-5">
@@ -78,7 +75,11 @@ const Main = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
-        {filteredList.length > 0
+        {loading
+          ? Array.from({ length: 8 }).map((_, index) => (
+              <Shimmer key={index} />
+            ))
+          : filteredList.length > 0
           ? filteredList.map((restaurant) => (
               <div
                 key={restaurant.info.id}
