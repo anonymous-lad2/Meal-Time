@@ -1,28 +1,23 @@
 import React from "react";
-import appmart from '../utility/images/appmart.avif'
-import playstore from '../utility/images/play_store.avif'
+import appmart from "../utility/images/appmart.avif";
+import playstore from "../utility/images/play_store.avif";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FaDiscord } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <footer
+      id="footer" // Add an id to reference the footer
+      className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+    >
       {/* Download Section */}
       <div className="flex flex-col lg:flex-row items-center justify-between px-6 py-4 border-b border-gray-300 dark:border-gray-700">
         <h2 className="text-lg font-semibold">
           For better experience, download the app now
         </h2>
         <div className="flex gap-4 mt-4 lg:mt-0">
-          <img
-            src={playstore}
-            alt="Google Play"
-            className="h-12"
-          />
-          <img
-            src={appmart}
-            alt="App Store"
-            className="h-12"
-          />
+          <img src={playstore} alt="Google Play" className="h-12" />
+          <img src={appmart} alt="App Store" className="h-12" />
         </div>
       </div>
 
@@ -89,7 +84,7 @@ const Footer = () => {
           <h3 className="font-semibold mb-4">Social Links</h3>
           <div className="flex space-x-4">
             <a href="#" aria-label="LinkedIn">
-                <FaLinkedin />
+              <FaLinkedin />
             </a>
             <a href="#" aria-label="Instagram">
               <FaInstagram />

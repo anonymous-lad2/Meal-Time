@@ -6,7 +6,7 @@ import Header from "../components/Header"; // Adjust the path if needed
 
 const Home = ({ darkTheme, setDarkTheme }) => {
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div id="home" className="relative min-h-screen overflow-hidden">
       <Header darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
 
       <Carousel

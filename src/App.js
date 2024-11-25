@@ -6,6 +6,7 @@ import Testimonial from "./components/Testimonial";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Footer from "./pages/Footer";
 import Error from "./pages/Error";
+import Login from "./pages/Login";
 
 function App() {
   const [darkTheme, setDarkTheme] = useState(false);
@@ -40,6 +41,10 @@ function App() {
           path: "/contact",
           element: <Footer />,
         },
+        {
+          path: "/login",
+          element: <Login/>
+        }
         
       ],
       errorElement: (
