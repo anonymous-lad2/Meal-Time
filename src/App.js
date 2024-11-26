@@ -50,7 +50,7 @@ function App() {
 
         {
           path: "/restaurants/:resId",
-          element: <RestaurantMenu />,
+          element: <RestaurantMenu/>,
         },
         
       ],

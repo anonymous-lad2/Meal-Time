@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import Shimmer from "./Shimmer";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Shimmer from "./Shimmer";
 import { Menu_API } from "../utility/data";
 import RestaurantCategory from "./RestaurantCategory";
 
@@ -14,13 +13,11 @@ const RestaurantMenu = () => {
   const [loading, setLoading] = useState(true);
   const [showItems, setShowItems] = useState(false);
   const { resId } = useParams();
-  // console.log(resId)
 
   const fetchMenu = async () => {
     const data = await fetch(Menu_API + resId);
     const menu = await data.json();
     setResInfo(menu.data);
-    // console.log(menu.data);
     setLoading(false);
   };
 
@@ -37,23 +34,31 @@ const RestaurantMenu = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
     );
 
-    // console.log(categories)
   return (
-    <div className="m-auto text-center mt-5">
-      <h1 className="text-2xl font-bold">{name}</h1>
-      <p className="text-lg">
-        {cuisines.join(", ")} - {costForTwoMessage}
-      </p>
-      {categories && categories.map((category) => (
-        <RestaurantCategory
-          key={category?.card?.card?.title}
-          data={category?.card?.card}
-          showItems={showItems}
-          setShowItems = {setShowItems}
-        />
-      ))}
+    <div className="max-w-screen mx-auto p-4 sm:p-8">
+      <div className="text-center mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold">{name}</h1>
+        <p className="text-lg sm:text-xl mt-2">
+          {cuisines.join(", ")} - {costForTwoMessage}
+        </p>
+        <p className="text-sm sm:text-base text-gray-500">
+          Average Rating: {avgRating} ⭐
+        </p>
+      </div>
+
+      <div className="space-y-6 dark:text-black">
+        {categories &&
+          categories.map((category) => (
+            <RestaurantCategory
+              key={category?.card?.card?.title}
+              data={category?.card?.card}
+              showItems={showItems}
+              setShowItems={setShowItems}
+            />
+          ))}
+      </div>
     </div>
   );
 };
 
-export default RestaurantMenu
+export default RestaurantMenu;
