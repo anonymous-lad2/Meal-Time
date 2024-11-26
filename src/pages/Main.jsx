@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { main_API } from "../utility/data";
 import RestaurantCard from "../components/RestaurantCard";
 import Shimmer from "../components/Shimmer";
+import { Link } from 'react-router-dom'
 
 const Main = () => {
   const [data, setData] = useState();
@@ -23,9 +24,9 @@ const Main = () => {
       res?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setLoading(false);
-    console.log(
-      res?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+    // console.log(
+    //   res?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    // );
   };
 
   useEffect(() => {
@@ -81,20 +82,22 @@ const Main = () => {
             ))
           : filteredList.length > 0
           ? filteredList.map((restaurant) => (
-              <div
+              <Link
                 key={restaurant.info.id}
+                to={"/restaurants/" + restaurant.info.id}
                 className="hover:scale-105 transition-transform duration-300 hover:cursor-pointer"
               >
                 <RestaurantCard info={restaurant.info} />
-              </div>
+              </Link>
             ))
           : data.map((restaurant) => (
-              <div
+              <Link
                 key={restaurant.info.id}
+                to={"/restaurants/" + restaurant.info.id}
                 className="hover:scale-105 transition-transform duration-300 hover:cursor-pointer"
               >
                 <RestaurantCard info={restaurant.info} />
-              </div>
+              </Link>
             ))}
       </div>
     </div>

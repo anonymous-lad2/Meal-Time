@@ -28,10 +28,7 @@ const Header = ({ darkTheme, setDarkTheme }) => {
                     w-screen mx-auto px-10 py-1 mb-11 bg-white dark:bg-gray-800 shadow-md"
     >
       {/* Logo with Scroll to Home */}
-      <div
-        onClick={() => handleScroll("home")}
-        className="cursor-pointer"
-      >
+      <div onClick={() => handleScroll("home")} className="cursor-pointer">
         <img src={logo} alt="Logo" className="h-12 w-18 sm:h-16" />
       </div>
 
@@ -48,8 +45,11 @@ const Header = ({ darkTheme, setDarkTheme }) => {
         {/* Navigation to About Page */}
         <NavLink
           to="/about"
-          className="hover:underline hover:cursor-pointer"
-          activeClassName="text-orange-500 font-semibold"
+          className={({ isActive }) =>
+            `hover:underline hover:cursor-pointer ${
+              isActive ? "text-orange-500 font-semibold" : ""
+            }`
+          }
         >
           About
         </NavLink>
@@ -65,8 +65,11 @@ const Header = ({ darkTheme, setDarkTheme }) => {
         {/* Navigation to Login Page */}
         <NavLink
           to="/login"
-          className="hover:underline hover:cursor-pointer"
-          activeClassName="text-orange-500 font-semibold"
+          className={({ isActive }) =>
+            `hover:underline hover:cursor-pointer ${
+              isActive ? "text-orange-500 font-semibold" : ""
+            }`
+          }
         >
           Login
         </NavLink>
@@ -117,8 +120,10 @@ const Header = ({ darkTheme, setDarkTheme }) => {
           <NavLink
             to="/about"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="hover:bg-gray-300 dark:hover:bg-gray-700 rounded-md w-full text-center py-2 cursor-pointer list-none transition-all duration-300"
-            activeClassName="bg-orange-500 text-white"
+            className={({
+              isActive,
+            }) => `hover:bg-gray-300 dark:hover:bg-gray-700 rounded-md w-full text-center py-2 cursor-pointer list-none transition-all duration-300
+            ${isActive ? "bg-orange-500 text-white" : ""}`}
           >
             About
           </NavLink>
@@ -138,8 +143,10 @@ const Header = ({ darkTheme, setDarkTheme }) => {
           <NavLink
             to="/login"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="hover:bg-gray-300 dark:hover:bg-gray-700 rounded-md w-full text-center py-2 cursor-pointer list-none transition-all duration-300"
-            activeClassName="bg-orange-500 text-white"
+            className={({
+              isActive,
+            }) => `hover:bg-gray-300 dark:hover:bg-gray-700 rounded-md w-full text-center py-2 cursor-pointer list-none transition-all duration-300
+            ${isActive ? "bg-orange-500 text-white" : ""}`}
           >
             Login
           </NavLink>

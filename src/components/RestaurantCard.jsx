@@ -1,4 +1,5 @@
 import React from "react";
+import { IMAGE_URL } from "../utility/data";
 
 const RestaurantCard = ({ info }) => {
   const {
@@ -15,7 +16,7 @@ const RestaurantCard = ({ info }) => {
   return (
     <div className="bg-white shadow-lg rounded-lg p-4 w-full max-w-sm">
       <img
-        src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`}
+        src={IMAGE_URL + cloudinaryImageId}
         alt={name}
         className="w-full h-48 object-cover rounded-t-lg"
       />
