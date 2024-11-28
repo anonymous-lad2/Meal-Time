@@ -1,15 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { main_API } from "../utility/data";
-import RestaurantCard from "../components/RestaurantCard";
+import RestaurantCard, { withVegLabel } from "../components/RestaurantCard";
 import Shimmer from "../components/Shimmer";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const Main = () => {
   const [data, setData] = useState();
   const [searchText, setSearchText] = useState("");
   const [loading, setLoading] = useState(true);
   const [filteredList, setFilteredList] = useState([]);
+
+  const RestaurantCardVeg = withVegLabel(RestaurantCard);
 
   const filterTopRated = () => {
     const topRated = data.filter((item) => item.info.avgRating >= 4.5);
@@ -77,9 +79,7 @@ const Main = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
         {loading
-          ? Array.from({ length: 8 }).map((_, index) => (
-              <Shimmer key={index} />
-            ))
+          ? Array.from({ length: 8 }).map((_, index) => <Shimmer key={index} />)
           : filteredList.length > 0
           ? filteredList.map((restaurant) => (
               <Link
@@ -87,7 +87,11 @@ const Main = () => {
                 to={"/restaurants/" + restaurant.info.id}
                 className="hover:scale-105 transition-transform duration-300 hover:cursor-pointer"
               >
-                <RestaurantCard info={restaurant.info} />
+                {restaurant?.info?.veg ? (
+                  <RestaurantCardVeg info={restaurant.info} />
+                ) : (
+                  <RestaurantCard info={restaurant.info} />
+                )}
               </Link>
             ))
           : data.map((restaurant) => (
@@ -96,7 +100,11 @@ const Main = () => {
                 to={"/restaurants/" + restaurant.info.id}
                 className="hover:scale-105 transition-transform duration-300 hover:cursor-pointer"
               >
-                <RestaurantCard info={restaurant.info} />
+                {restaurant?.info?.veg ? (
+                  <RestaurantCardVeg info={restaurant.info} />
+                ) : (
+                  <RestaurantCard info={restaurant.info} />
+                )}
               </Link>
             ))}
       </div>
