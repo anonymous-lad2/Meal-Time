@@ -4,10 +4,14 @@ import { MdNightlight, MdOutlineLightMode } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { FaCartShopping } from "react-icons/fa6";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux'
 
 const Header = ({ darkTheme, setDarkTheme }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems)
 
   // Smooth scrolling function
   const handleScroll = (id) => {
@@ -76,8 +80,11 @@ const Header = ({ darkTheme, setDarkTheme }) => {
       </ul>
 
       {/* Actions */}
-      <div className="flex items-center gap-4">
-        <FaCartShopping className="hover:underline cursor-pointer" />
+      <div className="flex items-center gap-4 relative">
+        <NavLink to='/cart'>
+          <FaCartShopping className="hover:underline cursor-pointer" />
+          <div className="text-black font-bold absolute -top-2 dark:text-green-600 left-4 z-30 text-lg">{cartItems.length}</div>
+        </NavLink>
 
         <button
           onClick={() => setDarkTheme(!darkTheme)}
