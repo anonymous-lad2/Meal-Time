@@ -2,12 +2,11 @@ import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { homeCards } from "../utility/assets"; // Ensure homeCards contains image URLs, titles, and descriptions
-import Header from "../components/Header"; // Adjust the path if needed
 
-const Home = ({ darkTheme, setDarkTheme }) => {
+const Home = () => {
   return (
     <div id="home" className="relative min-h-screen overflow-hidden">
-      <Header darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
+      
 
       <Carousel
         showArrows={false}

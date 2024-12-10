@@ -1,12 +1,12 @@
-import React from "react";
-import Template from "../components/Template";
-import image from "../utility/images/homeimg1.jpg";
+import React from 'react'
+import image from '../utility/images/homeimg4.jpg'
+import Template from '../components/Template';
 
-const Login = ({ setIsLoggedIn }) => {
-  const title = "Welcome Back";
+const SignUp = ({setIsLoggedIn}) => {
+  const title = "Join Our Foodie Family for Exclusive Perks!";
   const desc1 = "Sign up for exclusive deals and updates!";
   const desc2 = "Join us today and enjoy special offers, personalized recommendations, and a delicious journey like no other!";
-  const formType = "Login";
+  const formType = "signup";
 
   return (
     <Template
@@ -18,6 +18,6 @@ const Login = ({ setIsLoggedIn }) => {
       setIsLoggedIn={setIsLoggedIn}
     />
   );
-};
+}
 
-export default Login;
+export default SignUp;

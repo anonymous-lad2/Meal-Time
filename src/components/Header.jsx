@@ -4,14 +4,20 @@ import { MdNightlight, MdOutlineLightMode } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { FaCartShopping } from "react-icons/fa6";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux";
+import { toast } from "react-hot-toast";
 
-const Header = ({ darkTheme, setDarkTheme }) => {
+const Header = (props) => {
+  const darkTheme = props.darkTheme;
+  const setDarkTheme = props.setDarkTheme;
+  const isLoggedIn = props.isLoggedIn;
+  const setIsLoggedIn = props.setIsLoggedIn;
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems)
+  console.log(cartItems);
 
   // Smooth scrolling function
   const handleScroll = (id) => {
@@ -67,28 +73,59 @@ const Header = ({ darkTheme, setDarkTheme }) => {
         </li>
 
         {/* Navigation to Login Page */}
-        <NavLink
-          to="/login"
-          className={({ isActive }) =>
-            `hover:underline hover:cursor-pointer ${
-              isActive ? "text-orange-500 font-semibold" : ""
-            }`
-          }
-        >
-          Login
-        </NavLink>
+        {!isLoggedIn && (
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              `hover:underline hover:cursor-pointer ${
+                isActive ? "text-orange-500 font-semibold" : ""
+              }`
+            }
+          >
+            Login
+          </NavLink>
+        )}
+
+        {!isLoggedIn && (
+          <NavLink
+            to="/signup"
+            className={({ isActive }) =>
+              `hover:underline hover:cursor-pointer ${
+                isActive ? "text-orange-500 font-semibold" : ""
+              }`
+            }
+          >
+            Sign Up
+          </NavLink>
+        )}
+
+        {isLoggedIn && (
+          <NavLink to="/">
+            <button
+              onClick={() => {
+                setIsLoggedIn(false);
+                toast.success("LogOut Successfully");
+              }}
+            >
+              Log out
+            </button>
+          </NavLink>
+        )}
       </ul>
 
       {/* Actions */}
       <div className="flex items-center gap-4 relative">
-        <NavLink to='/cart'>
-          <FaCartShopping className="hover:underline cursor-pointer" />
-          <div className="text-black font-bold absolute -top-2 dark:text-green-600 left-4 z-30 text-lg">{cartItems.length}</div>
+        <NavLink to="/cart">
+          <FaCartShopping className="hover:underline cursor-pointer text-2xl" />
+          <div className="absolute -top-2 dark:bg-green-600 left-4 p-3 rounded-full z-30 flex items-center justify-center">
+            {/* {cartItems.length} */}
+            <p className="absolute">{cartItems.length}</p>
+          </div>
         </NavLink>
 
         <button
           onClick={() => setDarkTheme(!darkTheme)}
-          className="p-2 rounded-md"
+          className="p-2 rounded-md text-2xl"
         >
           {darkTheme ? <MdOutlineLightMode /> : <MdNightlight />}
         </button>
@@ -147,16 +184,48 @@ const Header = ({ darkTheme, setDarkTheme }) => {
           </li>
 
           {/* Navigation to Login Page */}
-          <NavLink
-            to="/login"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className={({
-              isActive,
-            }) => `hover:bg-gray-300 dark:hover:bg-gray-700 rounded-md w-full text-center py-2 cursor-pointer list-none transition-all duration-300
-            ${isActive ? "bg-orange-500 text-white" : ""}`}
-          >
-            Login
-          </NavLink>
+          {!isLoggedIn && (
+            <NavLink
+              to="/login"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={({
+                isActive,
+              }) => `hover:bg-gray-300 dark:hover:bg-gray-700 rounded-md w-full text-center py-2 cursor-pointer list-none transition-all duration-300
+           ${isActive ? "bg-orange-500 text-white" : ""}`}
+            >
+              Login
+            </NavLink>
+          )}
+
+          {!isLoggedIn && (
+            <NavLink
+              to="/signup"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={({
+                isActive,
+              }) => `hover:bg-gray-300 dark:hover:bg-gray-700 rounded-md w-full text-center py-2 cursor-pointer list-none transition-all duration-300
+          ${isActive ? "bg-orange-500 text-white" : ""}`}
+            >
+              Sign Up
+            </NavLink>
+          )}
+
+          {isLoggedIn && (
+            <NavLink
+              to="/"
+              className="hover:bg-gray-300 dark:hover:bg-gray-700 rounded-md w-full text-center py-2 cursor-pointer list-none transition-all duration-300"
+            >
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  toast.success("LogOut Successfully");
+                  setIsLoggedIn(false);
+                }}
+              >
+                Log Out
+              </button>
+            </NavLink>
+          )}
         </ul>
       </div>
     </div>

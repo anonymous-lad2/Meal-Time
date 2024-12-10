@@ -9,20 +9,27 @@ import Error from "./pages/Error";
 import Login from "./pages/Login";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Cart from "./pages/Cart";
-import { Provider } from 'react-redux'
+import { Provider } from "react-redux";
 import { Store } from "./redux/Store";
+import SignUp from "./pages/SignUp";
 
 function App() {
   const [darkTheme, setDarkTheme] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const appRouter = createBrowserRouter([
     {
       path: "/",
       element: (
-        <Provider store={ Store }>
+        <Provider store={Store}>
           <div className={`scroll-w-0 ${darkTheme ? "dark" : ""}`}>
-            <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-200 min-h-screen px-8">
-              <Home darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
+            <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-200 min-h-screen px-8 py-24">
+              <Header
+                darkTheme={darkTheme}
+                setDarkTheme={setDarkTheme}
+                isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
+              />
               <Outlet />
               <Footer />
             </div>
@@ -34,6 +41,7 @@ function App() {
           path: "/",
           element: (
             <div>
+              <Home />
               <Main />
               <Testimonial />
             </div>
@@ -52,7 +60,12 @@ function App() {
 
         {
           path: "/login",
-          element: <Login />,
+          element: <Login setIsLoggedIn={setIsLoggedIn} />,
+        },
+
+        {
+          path: "/signup",
+          element: <SignUp setIsLoggedIn={setIsLoggedIn}/>,
         },
 
         {
@@ -67,7 +80,12 @@ function App() {
       ],
       errorElement: (
         <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-200 min-h-screen">
-          <Header darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
+          <Header
+            darkTheme={darkTheme}
+            setDarkTheme={setDarkTheme}
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+          />
           <Error />
           <Footer />
         </div>
