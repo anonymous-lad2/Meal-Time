@@ -3,6 +3,7 @@ import { IMAGE_URL } from "../utility/data";
 import { FaCartShopping } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../redux/Slices/CartSlice";
+import { toast } from 'react-hot-toast'
 
 const ItemList = ({ items }) => {
 
@@ -11,6 +12,7 @@ const ItemList = ({ items }) => {
 
   const addToCart = (item) => {
     dispatch(addItem(item))
+    toast.success("Item added");
   }
   
   return (

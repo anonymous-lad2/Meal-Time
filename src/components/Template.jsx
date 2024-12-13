@@ -27,7 +27,7 @@ const Template = ({ title, desc1, desc2, image, formType, setIsLoggedIn }) => {
         )}
 
         {/* Google Sign-In Button */}
-        <button className="w-full flex items-center justify-center rounded-[8px] font-medium dark:text-richblack-100 dark:border-richblack-700 border border-black px-[12px] py-[8px] gap-x-2 mt-6">
+        <button className="w-full dark:bg-transparent bg-richblack-900 flex items-center justify-center rounded-[8px] font-medium text-richblack-100 dark:border-richblack-700 border border-black px-[12px] py-[8px] gap-x-2 mt-6">
           <FcGoogle />
           <span>Sign in with Google</span>
         </button>
