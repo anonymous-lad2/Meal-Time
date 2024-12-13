@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../utility/restaurant-logo-design-template.avif";
+import logo from "../utility/restaurant-logo-design-template-removebg-preview.png";
 import { MdNightlight, MdOutlineLightMode } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { FaCartShopping } from "react-icons/fa6";
@@ -39,7 +39,7 @@ const Header = (props) => {
     >
       {/* Logo with Scroll to Home */}
       <div onClick={() => handleScroll("home")} className="cursor-pointer">
-        <img src={logo} alt="Logo" className="h-12 w-18 sm:h-16" />
+        <img src={logo} alt="Logo" className="h-14 w-18 sm:h-16" />
       </div>
 
       {/* Desktop menu */}
